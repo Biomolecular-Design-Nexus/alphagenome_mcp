@@ -1,0 +1,51 @@
+{
+  "_description": "Configuration for batch sequence analysis script",
+  "_source": "Extracted from examples/use_case_5_batch_sequence_analysis.py",
+
+  "organism": {
+    "default": "human",
+    "supported": ["human", "mouse", "fly"]
+  },
+
+  "output_types": {
+    "default": ["atac", "cage", "dnase"],
+    "available": ["atac", "cage", "dnase", "histone_marks", "gene_expression"]
+  },
+
+  "batch_processing": {
+    "max_sequences": 1000,
+    "max_workers": 5,
+    "chunk_size": 50,
+    "timeout_per_sequence": 30,
+    "total_timeout_seconds": 3600
+  },
+
+  "sequence_validation": {
+    "valid_characters": ["A", "T", "G", "C", "N"],
+    "min_length": 10,
+    "max_length": 50000,
+    "skip_empty_lines": true,
+    "auto_uppercase": true
+  },
+
+  "statistics": {
+    "calculate_length_stats": true,
+    "calculate_gc_content": true,
+    "calculate_batch_summary": true
+  },
+
+  "api": {
+    "enable_mock_mode": true,
+    "timeout_seconds": 120,
+    "retry_attempts": 3,
+    "use_bulk_endpoint": true
+  },
+
+  "output": {
+    "include_sequence_metadata": true,
+    "include_batch_statistics": true,
+    "include_individual_results": true,
+    "default_format": "json",
+    "pretty_print": false
+  }
+}

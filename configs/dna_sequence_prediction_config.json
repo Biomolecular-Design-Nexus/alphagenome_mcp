@@ -1,0 +1,35 @@
+{
+  "_description": "Configuration for DNA sequence prediction script",
+  "_source": "Extracted from examples/use_case_1_dna_sequence_prediction.py",
+
+  "organism": {
+    "default": "human",
+    "supported": ["human", "mouse", "fly"]
+  },
+
+  "output_types": {
+    "default": ["atac", "cage", "dnase"],
+    "available": ["atac", "cage", "dnase", "histone_marks", "gene_expression"]
+  },
+
+  "sequence_validation": {
+    "valid_characters": ["A", "T", "G", "C", "N"],
+    "min_length": 10,
+    "max_length": 50000,
+    "auto_uppercase": true,
+    "remove_invalid_chars": false
+  },
+
+  "api": {
+    "enable_mock_mode": true,
+    "timeout_seconds": 30,
+    "retry_attempts": 3
+  },
+
+  "output": {
+    "include_sequence_metadata": true,
+    "include_gc_content": true,
+    "default_format": "json",
+    "pretty_print": false
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "test_date": "2025-12-25T02:16:38.092035+00:00",
+  "server_name": "AlphaGenome-MCP-Server",
+  "tests": {
+    "server_startup": {
+      "status": "passed",
+      "output": "Server AlphaGenome-MCP-Server loaded successfully",
+      "error": "",
+      "return_code": 0
+    },
+    "tool_imports": {
+      "status": "passed",
+      "output": "dna_sequence_prediction: OK\ngenomic_interval_analysis: OK\nvariant_effect_prediction: OK\nvariant_scoring: OK\nbatch_sequence_analysis: OK\noutput_metadata: OK",
+      "error": ""
+    },
+    "claude_code_registration": {
+      "status": "passed",
+      "output": "Checking MCP server health...\n\nlinearfold_mcp: python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/linearfold_mcp/src/linearfold_mcp.py - \u2717 Failed to connect\nevo2: /home/xux/miniforge3/envs/nucleic-mcp/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/evo2_mcp/src/server.py - \u2713 Connected\nDNABERT: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/dnabert_mcp/env/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/dnabert_mcp/src/server.py - \u2713 Connected\nDNABERT_2: /home/xux/miniforge3/envs/nucleic-mcp/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/dnabert2_mcp/src/server.py - \u2713 Connected\nnucleotide-transformer: /home/xux/miniforge3/envs/nucleic-mcp/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/nucleotide_transformer_mcp/src/server.py - \u2713 Connected\nRNA-FM: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/rnafm_mcp/env/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/rnafm_mcp/src/server.py - \u2713 Connected\nRiNALMo: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/rinalmo_mcp/env/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/rinalmo_mcp/src/server.py - \u2713 Connected\nLinearDesign: /home/xux/miniforge3/envs/nucleic-mcp/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/lineardesign_mcp/src/server.py - \u2713 Connected\nViennaRNA: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/viennarna_mcp/env/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/viennarna_mcp/src/server.py - \u2713 Connected\nRhoFold: /home/xux/miniforge3/envs/nucleic-mcp/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/rhofold_mcp/src/server.py - \u2713 Connected\nDRfold2: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/drfold2_mcp/env/bin/python3.11 /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/drfold2_mcp/src/server.py - \u2713 Connected\nSHAPEwarp: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/shapewarp_mcp/env/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/shapewarp_mcp/src/server.py - \u2713 Connected\nrnamotif: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/rnamotif_mcp/env/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/rnamotif_mcp/src/server.py - \u2713 Connected\nFOREST2020: /home/xux/miniforge3/envs/nucleic-mcp/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/forest_mcp/src/server.py - \u2713 Connected\nRhoDesign: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/rhodesign_mcp/env/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/rhodesign_mcp/src/server.py - \u2713 Connected\ngeometric-rna-design: python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/grnade_mcp/src/server.py - \u2713 Connected\nGTEx-MCP-Server: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/gtex_mcp/env/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/gtex_mcp/src/server.py - \u2713 Connected\nEnsembl-MCP-Server: /home/xux/miniforge3/envs/nucleic-mcp/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/ensembl_mcp/src/server.py - \u2713 Connected\ntrRosettaRNA_v1_1: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/trrosettarna_mcp/env/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/trrosettarna_mcp/src/server.py - \u2713 Connected\nCodonTransformer: /home/xux/miniforge3/envs/nucleic-mcp/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/codontransformer_mcp/src/server.py - \u2713 Connected\nRNAelem: /home/xux/miniforge3/envs/nucleic-mcp/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/rnaelem_mcp/src/server.py - \u2713 Connected\nAlphaGenome-MCP-Server: /home/xux/miniforge3/envs/nucleic-mcp/bin/python /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/alphagenome_mcp/src/server.py - \u2713 Connected",
+      "error": "",
+      "found_server": true,
+      "server_connected": true
+    },
+    "job_manager": {
+      "status": "passed",
+      "output": "Job manager loaded successfully\nJobs directory: /home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/alphagenome_mcp/jobs\nCurrent jobs: 0",
+      "error": ""
+    },
+    "example_data": {
+      "status": "passed",
+      "examples_dir": "/home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/alphagenome_mcp/examples/data",
+      "existing_files": [],
+      "missing_files": [
+        "/home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/alphagenome_mcp/examples/data/test_sequences.txt"
+      ],
+      "files_in_examples": [
+        "/home/xux/Desktop/NucleicMCP/NucleicMCP/tool-mcps/alphagenome_mcp/examples/test_sequences.txt"
+      ],
+      "examples_dir_exists": true
+    },
+    "mock_mode": {
+      "status": "passed",
+      "output": "Mock mode: true\nMock mode enabled",
+      "mock_enabled": true
+    }
+  },
+  "issues": [],
+  "summary": {
+    "total_tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "pass_rate": "100.0%",
+    "ready_for_production": true
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "_description": "Default configuration for AlphaGenome MCP scripts",
+  "_created": "2024-12-25",
+  "_version": "1.0.0",
+
+  "api": {
+    "mock_mode": true,
+    "timeout_seconds": 30
+  },
+
+  "organism": {
+    "default": "human",
+    "supported": ["human", "mouse", "fly"]
+  },
+
+  "output_types": {
+    "default": ["atac", "cage", "dnase"],
+    "available": ["atac", "cage", "dnase", "histone_marks", "gene_expression"],
+    "descriptions": {
+      "atac": "Chromatin accessibility predictions",
+      "cage": "Transcription start site predictions",
+      "dnase": "DNase hypersensitivity predictions",
+      "histone_marks": "Histone modification predictions",
+      "gene_expression": "Gene expression predictions"
+    }
+  },
+
+  "validation": {
+    "dna_characters": ["A", "T", "G", "C", "N"],
+    "max_sequence_length": 100000,
+    "min_sequence_length": 10
+  },
+
+  "batch_processing": {
+    "max_workers": 5,
+    "max_sequences": 1000
+  },
+
+  "output": {
+    "pretty_print": false,
+    "include_metadata": true
+  }
+}

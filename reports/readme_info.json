@@ -1,0 +1,293 @@
+{
+  "project_name": "AlphaGenome-MCP-Server",
+  "description": "AI-powered genomic analysis MCP server providing comprehensive DNA sequence prediction, variant analysis, and genomic feature annotation using Google DeepMind's AlphaGenome models",
+  "features": [
+    "DNA Sequence Analysis: Predict chromatin accessibility, transcription start sites, DNase hypersensitivity",
+    "Variant Effect Prediction: Assess functional impact of genetic variants on genomic features",
+    "Pathogenicity Scoring: Score variants using 19 different algorithms for clinical interpretation",
+    "Genomic Interval Analysis: Analyze specific chromosomal regions for regulatory elements",
+    "Batch Processing: High-throughput analysis of multiple sequences or variants",
+    "Job Management: Background processing with progress tracking for long-running tasks",
+    "Mock Mode: Safe testing environment with simulated results"
+  ],
+  "tools": [
+    {
+      "name": "predict_dna_sequence",
+      "type": "sync",
+      "runtime": "~300ms",
+      "description": "Predict genomic features for DNA sequences",
+      "example_prompt": "Use predict_dna_sequence with sequence \"ATGCGATCGTAGCTAGCATGCAAATTTGGGCCCGTACGCATGCTAGCGATCGTAGCTAG\" and organism \"human\""
+    },
+    {
+      "name": "analyze_genomic_interval",
+      "type": "sync",
+      "runtime": "~150ms",
+      "description": "Analyze genomic intervals for regulatory features",
+      "example_prompt": "Use analyze_genomic_interval with interval \"chr1:1000000-1002048\" and output_types [\"atac\", \"cage\"]"
+    },
+    {
+      "name": "predict_variant_effects",
+      "type": "sync",
+      "runtime": "~200ms",
+      "description": "Predict effects of genetic variants",
+      "example_prompt": "Use predict_variant_effects with variant \"chr1:1001000A>G\" and interval \"chr1:1000000-1002048\""
+    },
+    {
+      "name": "score_variant_pathogenicity",
+      "type": "sync",
+      "runtime": "~200ms",
+      "description": "Score variants with 19 pathogenicity algorithms",
+      "example_prompt": "Score variant chr1:1001000A>G for pathogenicity using score_variant_pathogenicity with interval chr1:1000000-1002048"
+    },
+    {
+      "name": "get_output_metadata",
+      "type": "sync",
+      "runtime": "~100ms",
+      "description": "Get metadata about available outputs",
+      "example_prompt": "Use get_output_metadata with organism \"human\""
+    },
+    {
+      "name": "validate_genomic_inputs",
+      "type": "sync",
+      "runtime": "~50ms",
+      "description": "Validate inputs before processing",
+      "example_prompt": "Use validate_genomic_inputs with sequence \"ATGCGATCG\", variant \"chr1:1000A>G\", and interval \"chr1:900-1100\""
+    },
+    {
+      "name": "get_supported_organisms",
+      "type": "sync",
+      "runtime": "~10ms",
+      "description": "Get list of supported organisms",
+      "example_prompt": "What organisms are supported? Use get_supported_organisms"
+    },
+    {
+      "name": "get_example_data",
+      "type": "sync",
+      "runtime": "~10ms",
+      "description": "Get information about example datasets",
+      "example_prompt": "What example data is available? Use get_example_data"
+    },
+    {
+      "name": "submit_dna_sequence_prediction",
+      "type": "submit",
+      "runtime": "Variable",
+      "description": "Submit DNA sequence prediction for background processing",
+      "example_prompt": "Submit a batch sequence analysis using submit_batch_sequence_analysis with input_file @examples/data/sequences.txt and job_name \"batch_analysis\""
+    },
+    {
+      "name": "submit_variant_effect_prediction",
+      "type": "submit",
+      "runtime": "Variable",
+      "description": "Submit variant effect prediction",
+      "example_prompt": "Submit variant effect prediction using submit_variant_effect_prediction with variant \"chr1:1001000A>G\" and interval \"chr1:1000000-1002048\""
+    },
+    {
+      "name": "submit_variant_scoring",
+      "type": "submit",
+      "runtime": "Variable",
+      "description": "Submit variant pathogenicity scoring",
+      "example_prompt": "Submit variant scoring using submit_variant_scoring with variant \"chr1:1001000A>G\" and interval \"chr1:1000000-1002048\""
+    },
+    {
+      "name": "submit_batch_sequence_analysis",
+      "type": "submit",
+      "runtime": ">10 min",
+      "description": "Submit batch sequence analysis",
+      "example_prompt": "Submit batch processing for all sequences in @examples/data/sequences.txt using submit_batch_sequence_analysis with job_name \"multi_sequence_analysis\""
+    },
+    {
+      "name": "submit_batch_variant_analysis",
+      "type": "submit",
+      "runtime": "Variable",
+      "description": "Submit batch variant analysis",
+      "example_prompt": "Process multiple variants using submit_batch_variant_analysis with variants [\"chr1:1001000A>G\", \"chr1:1001100C>T\"] and intervals [\"chr1:1000000-1002048\", \"chr1:1000000-1002048\"]"
+    },
+    {
+      "name": "get_job_status",
+      "type": "job_management",
+      "runtime": "<100ms",
+      "description": "Check job progress and status",
+      "example_prompt": "Check the status using get_job_status with job_id \"your-job-id\""
+    },
+    {
+      "name": "get_job_result",
+      "type": "job_management",
+      "runtime": "<100ms",
+      "description": "Get results when completed",
+      "example_prompt": "Get results using get_job_result with job_id \"your-job-id\""
+    },
+    {
+      "name": "get_job_log",
+      "type": "job_management",
+      "runtime": "<100ms",
+      "description": "View execution logs with tail option",
+      "example_prompt": "View logs using get_job_log with job_id \"your-job-id\" and tail 100"
+    },
+    {
+      "name": "cancel_job",
+      "type": "job_management",
+      "runtime": "<100ms",
+      "description": "Cancel running job",
+      "example_prompt": "Cancel job using cancel_job with job_id \"your-job-id\""
+    },
+    {
+      "name": "list_jobs",
+      "type": "job_management",
+      "runtime": "<100ms",
+      "description": "List all jobs with optional status filter",
+      "example_prompt": "List all jobs using list_jobs"
+    }
+  ],
+  "scripts": [
+    {
+      "name": "dna_sequence_prediction.py",
+      "description": "Predict genomic features for DNA sequences",
+      "example_command": "mamba run -p ./env python scripts/dna_sequence_prediction.py --input examples/data/sample_sequence.txt --output-types atac cage --pretty",
+      "use_case": "Chromatin accessibility analysis"
+    },
+    {
+      "name": "genomic_interval_analysis.py",
+      "description": "Analyze genomic intervals for regulatory features",
+      "example_command": "mamba run -p ./env python scripts/genomic_interval_analysis.py --interval chr1:1000000-1002048 --output-types atac cage",
+      "use_case": "Promoter region analysis"
+    },
+    {
+      "name": "variant_effect_prediction.py",
+      "description": "Predict effects of genetic variants",
+      "example_command": "mamba run -p ./env python scripts/variant_effect_prediction.py --variant chr1:1001000A>G --interval chr1:1000000-1002048 --output results/variant_effects.json",
+      "use_case": "Variant functional assessment"
+    },
+    {
+      "name": "variant_scoring.py",
+      "description": "Score variants with 19 pathogenicity algorithms",
+      "example_command": "mamba run -p ./env python scripts/variant_scoring.py --variant chr1:1001000A>G --interval chr1:1000000-1002048",
+      "use_case": "Clinical interpretation"
+    },
+    {
+      "name": "batch_sequence_analysis.py",
+      "description": "Process multiple sequences in parallel",
+      "example_command": "mamba run -p ./env python scripts/batch_sequence_analysis.py --input examples/data/sequences.txt --max-workers 3 --summary",
+      "use_case": "High-throughput analysis"
+    },
+    {
+      "name": "output_metadata.py",
+      "description": "Retrieve API capabilities and output types",
+      "example_command": "mamba run -p ./env python scripts/output_metadata.py --organism human --parse",
+      "use_case": "API exploration"
+    }
+  ],
+  "demo_data": [
+    {
+      "file": "sample_sequence.txt",
+      "description": "Single 56bp test sequence for basic testing",
+      "size": "56bp",
+      "used_by": ["predict_dna_sequence", "dna_sequence_prediction.py"],
+      "content_preview": "ATGCGATCGTAGCTAGCATGCAAATTTGGGCCCGTACGCATGCTAGCGATCGTAGCTAG"
+    },
+    {
+      "file": "sequences.txt",
+      "description": "7 synthetic sequences for batch testing",
+      "size": "12-21bp each",
+      "used_by": ["submit_batch_sequence_analysis", "batch_sequence_analysis.py"],
+      "content_preview": "ATGCGATCGTAGCTAGCATGC, GGCCTTAACCGGAAGGCCTT, ..."
+    },
+    {
+      "file": "test_sequence_16k.txt",
+      "description": "Large sequence for performance testing",
+      "size": "16KB",
+      "used_by": ["Long-running tasks"],
+      "content_preview": "Large DNA sequence for testing performance..."
+    },
+    {
+      "file": "test_sequences_16k.txt",
+      "description": "Multiple large sequences",
+      "size": "Multiple 16KB",
+      "used_by": ["Batch processing"],
+      "content_preview": "Multiple large sequences for batch testing..."
+    }
+  ],
+  "configs": [
+    {
+      "file": "default_config.json",
+      "description": "Main configuration settings",
+      "parameters": {
+        "organism": "Target organism (human, mouse, fly)",
+        "output_types": "Available genomic feature types",
+        "validation": "Sequence validation settings",
+        "batch_processing": "Parallel processing limits"
+      }
+    },
+    {
+      "file": "dna_sequence_prediction_config.json",
+      "description": "DNA sequence analysis settings",
+      "parameters": {
+        "max_sequence_length": "Maximum sequence length",
+        "output_types": "Default output types"
+      }
+    },
+    {
+      "file": "genomic_interval_analysis_config.json",
+      "description": "Genomic interval settings",
+      "parameters": {
+        "coordinate_system": "Coordinate system format",
+        "interval_limits": "Maximum interval sizes"
+      }
+    },
+    {
+      "file": "variant_analysis_config.json",
+      "description": "Variant analysis settings",
+      "parameters": {
+        "scoring_algorithms": "Pathogenicity algorithms",
+        "effect_thresholds": "Effect size thresholds"
+      }
+    },
+    {
+      "file": "batch_analysis_config.json",
+      "description": "Batch processing settings",
+      "parameters": {
+        "max_workers": "Maximum parallel workers",
+        "max_sequences": "Maximum sequences per batch"
+      }
+    }
+  ],
+  "environment": {
+    "python_version": "3.11",
+    "package_manager": "mamba (preferred over conda)",
+    "key_dependencies": [
+      "fastmcp=2.14.1",
+      "loguru=0.7.3",
+      "alphagenome=0.5.1",
+      "pandas=2.3.3",
+      "numpy=2.4.0"
+    ],
+    "mock_mode": "Enabled by default for testing"
+  },
+  "installation": {
+    "environment_creation": "$PKG_MGR create -p ./env python=3.11 pip -y",
+    "dependency_installation": [
+      "$PKG_MGR run -p ./env pip install loguru click pandas numpy tqdm",
+      "$PKG_MGR run -p ./env pip install alphagenome",
+      "$PKG_MGR run -p ./env pip install fastmcp"
+    ],
+    "mcp_registration": [
+      "mamba run -p ./env fastmcp install src/server.py --name AlphaGenome-MCP-Server",
+      "claude mcp add AlphaGenome-MCP-Server -- $(pwd)/env/bin/python $(pwd)/src/server.py"
+    ]
+  },
+  "validation": {
+    "files_verified": [
+      "✓ All scripts exist and execute correctly",
+      "✓ Demo data files present with correct content",
+      "✓ Configuration files validated",
+      "✓ MCP server loads successfully",
+      "✓ Mock mode functioning properly",
+      "✓ All 18 tools registered in MCP server"
+    ],
+    "test_results": {
+      "script_execution": "✓ PASSED - Scripts run with mock mode",
+      "mcp_server": "✓ PASSED - Server loads without errors",
+      "file_structure": "✓ PASSED - All referenced files exist",
+      "environment": "✓ PASSED - Dependencies installed correctly"
+    }
+  }
+}

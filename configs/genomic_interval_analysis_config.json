@@ -1,0 +1,43 @@
+{
+  "_description": "Configuration for genomic interval analysis script",
+  "_source": "Extracted from examples/use_case_2_genomic_interval_analysis.py",
+
+  "organism": {
+    "default": "human",
+    "supported": ["human", "mouse", "fly"]
+  },
+
+  "output_types": {
+    "default": ["atac"],
+    "available": ["atac", "cage", "dnase", "histone_marks", "gene_expression"],
+    "recommended_for_intervals": ["atac", "dnase", "histone_marks"]
+  },
+
+  "interval_validation": {
+    "min_interval_size": 100,
+    "max_interval_size": 10000000,
+    "valid_chromosomes": ["chr1", "chr2", "chr3", "chr4", "chr5", "chr6", "chr7", "chr8", "chr9", "chr10",
+                         "chr11", "chr12", "chr13", "chr14", "chr15", "chr16", "chr17", "chr18", "chr19",
+                         "chr20", "chr21", "chr22", "chrX", "chrY", "chrM"],
+    "case_insensitive_chromosomes": true
+  },
+
+  "analysis": {
+    "include_peak_detection": true,
+    "peak_threshold": 0.7,
+    "calculate_statistics": true
+  },
+
+  "api": {
+    "enable_mock_mode": true,
+    "timeout_seconds": 60,
+    "retry_attempts": 3
+  },
+
+  "output": {
+    "include_interval_metadata": true,
+    "include_statistics": true,
+    "default_format": "json",
+    "pretty_print": false
+  }
+}

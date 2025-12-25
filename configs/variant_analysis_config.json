@@ -1,0 +1,49 @@
+{
+  "_description": "Configuration for variant effect prediction and scoring scripts",
+  "_source": "Extracted from examples/use_case_3_variant_effect_prediction.py and use_case_4_variant_scoring.py",
+
+  "organism": {
+    "default": "human",
+    "supported": ["human", "mouse", "fly"]
+  },
+
+  "output_types": {
+    "default_for_effects": ["atac", "cage", "dnase"],
+    "available": ["atac", "cage", "dnase", "histone_marks", "gene_expression"],
+    "recommended_for_variants": ["atac", "cage", "dnase"]
+  },
+
+  "variant_validation": {
+    "valid_nucleotides": ["A", "T", "G", "C", "N"],
+    "max_ref_length": 100,
+    "max_alt_length": 100,
+    "case_insensitive_chromosomes": true,
+    "require_position_in_interval": true
+  },
+
+  "scoring": {
+    "algorithms": [
+      "CADD", "REVEL", "PrimateAI", "SpliceAI", "DANN", "FATHMM",
+      "MutationTaster", "PolyPhen2", "SIFT", "LRT", "MutationAssessor",
+      "PROVEAN", "VEST4", "MetaSVM", "MetaLR", "Eigen", "GenoCanyon",
+      "fitCons", "PhyloP"
+    ],
+    "pathogenicity_threshold": 0.5,
+    "confidence_threshold": 0.7
+  },
+
+  "api": {
+    "enable_mock_mode": true,
+    "timeout_seconds": 45,
+    "retry_attempts": 3
+  },
+
+  "output": {
+    "include_variant_metadata": true,
+    "include_interval_metadata": true,
+    "include_effect_summaries": true,
+    "include_interpretation": true,
+    "default_format": "json",
+    "pretty_print": false
+  }
+}
